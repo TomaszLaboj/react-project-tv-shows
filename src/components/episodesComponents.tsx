@@ -20,6 +20,20 @@ interface IEpisode {
   _links: { self: { href: string } };
 }
 
-export default function displayEpisodes(props: IEpisode[]): JSX.Element {
-  return <></>;
+export default function DisplayEpisodes(): JSX.Element {
+
+  return (
+  <>
+  <div>
+    <ul>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+
+    </ul>
+  </div>
+  </>
+  );
 }
