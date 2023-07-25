@@ -1,4 +1,4 @@
-import formatEpisodeCode from "./formatEpisodeCode"
+import formatEpisodeCode from "./formatEpisodeCode";
 
 interface IEpisode {
   id: number;
@@ -24,17 +24,16 @@ interface EpisodeViewProp {
   episode: IEpisode;
 }
 
-
-  
-
 export default function DisplayEpisodes(props: EpisodeViewProp) {
   return (
     <div className="episode">
       <p>{props.episode.name}</p>
-      <p>{formatEpisodeCode(props.episode.season,props.episode.number)}</p>
-      
+      <p>{formatEpisodeCode(props.episode.season, props.episode.number)}</p>
+
       <img src={props.episode.image.medium} alt="props.episode.name" />
-      <p>{props.episode.summary.substring(3,props.episode.summary.length-4)}</p>
+      <p>
+        {props.episode.summary.substring(3, props.episode.summary.length - 4)}
+      </p>
     </div>
   );
 }
