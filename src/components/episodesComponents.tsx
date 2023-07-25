@@ -20,15 +20,25 @@ interface IEpisode {
   _links: { self: { href: string } };
 }
 
-export default function DisplayEpisodes(props: IEpisode[]): JSX.Element {
+interface EpisodeViewProp {
+  episode: IEpisode;
+}
+
+
+export default function DisplayEpisodes(props: EpisodeViewProp){
 
   return (
-  <>
-  <div>
-    {props.map((element)=><div>{element}</div>)}
+  
+  <div className="episode">
+    <p>{props.episode.name}</p>
+    <p>{props.episode.season}</p>
+    <p>{props.episode.number}</p>
+    <img src={props.episode.image.medium}/>
+    <p>{props.episode.summary}</p>
+    
     
     
   </div>
-  </>
+
   );
 }
