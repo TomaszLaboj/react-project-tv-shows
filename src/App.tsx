@@ -1,5 +1,6 @@
 import episodes from "./episodes.json";
 import DisplayEpisodes from "./components/episodesComponents";
+import "./App.css";
 
 console.log(`Imported ${episodes.length} episode(s)`);
 console.log(`First episode's name is ${episodes[0].name}`);
@@ -13,7 +14,7 @@ function App(): JSX.Element {
 
   return (
     <>
-      <div>{episodesArray}</div>
+      <div className="main">{episodesArray}</div>
       <footer className="footer">
         <p>
           Data has been obtained from{" "}
