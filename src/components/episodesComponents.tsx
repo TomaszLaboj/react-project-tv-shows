@@ -44,8 +44,8 @@ export default function DisplayEpisodes(props: EpisodeViewProp) {
   return (
     <div className="episode">
       <p>{props.episode.name}</p>
-      <p>{props.episode.season}</p>
-      <p>{props.episode.number}</p>
+      <p>{formatEpisodeCode(props.episode.season,props.episode.number)}</p>
+      
       <img src={props.episode.image.medium} alt="props.episode.name" />
       <p>{props.episode.summary}</p>
     </div>
