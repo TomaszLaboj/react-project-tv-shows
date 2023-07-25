@@ -1,0 +1,17 @@
+body {
+background-color: #edf1e2;
+}
+
+.main {
+    display: grid;
+    grid-template-columns: 300px 300px 300px;
+    gap: 50px;
+    padding: 10px;
+}
+.episode {
+    background-color: #919090;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 10px;
+    text-align: center;
+}
