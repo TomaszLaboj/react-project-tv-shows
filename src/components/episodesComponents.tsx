@@ -34,7 +34,7 @@ export default function DisplayEpisodes(props: EpisodeViewProp) {
       <p>{formatEpisodeCode(props.episode.season,props.episode.number)}</p>
       
       <img src={props.episode.image.medium} alt="props.episode.name" />
-      <p>{props.episode.summary}</p>
+      <p>{props.episode.summary.substring(3,props.episode.summary.length-4)}</p>
     </div>
   );
 }
