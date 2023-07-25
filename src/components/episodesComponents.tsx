@@ -1,5 +1,3 @@
-import episodes from "../episodes.json";
-
 interface IEpisode {
   id: number;
   url: string;
@@ -24,21 +22,14 @@ interface EpisodeViewProp {
   episode: IEpisode;
 }
 
-
-export default function DisplayEpisodes(props: EpisodeViewProp){
-
+export default function DisplayEpisodes(props: EpisodeViewProp) {
   return (
-  
-  <div className="episode">
-    <p>{props.episode.name}</p>
-    <p>{props.episode.season}</p>
-    <p>{props.episode.number}</p>
-    <img src={props.episode.image.medium}/>
-    <p>{props.episode.summary}</p>
-    
-    
-    
-  </div>
-
+    <div className="episode">
+      <p>{props.episode.name}</p>
+      <p>{props.episode.season}</p>
+      <p>{props.episode.number}</p>
+      <img src={props.episode.image.medium} alt="props.episode.name" />
+      <p>{props.episode.summary}</p>
+    </div>
   );
 }
