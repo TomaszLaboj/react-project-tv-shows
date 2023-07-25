@@ -17,7 +17,11 @@ function App(): JSX.Element {
       <footer className="footer">
         <p>
           Data has been obtained from{" "}
-          <a href="https://tvmaze.com/api#licensing" target="_blank" rel="noreferrer">
+          <a
+            href="https://tvmaze.com/api#licensing"
+            target="_blank"
+            rel="noreferrer"
+          >
             TVMaze.com
           </a>
         </p>
