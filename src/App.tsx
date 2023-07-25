@@ -11,7 +11,19 @@ function App(): JSX.Element {
     episodesArray.push(<DisplayEpisodes episode={oneEpisode} />);
   }
 
-  return <div>{episodesArray}</div>;
+  return (
+    <>
+      <div>{episodesArray}</div>
+      <footer className="footer">
+        <p>
+          Data has been obtained from{" "}
+          <a href="tvmaze.com/api#licensing" target="_blank">
+            TVMaze.com
+          </a>{" "}
+        </p>
+      </footer>
+    </>
+  );
 }
 
 export default App;
