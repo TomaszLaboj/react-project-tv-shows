@@ -19,11 +19,13 @@ function App(): JSX.Element {
 const [current, setCurrent] = useState(createComponent(displayArray
   ));
 const [input, setInput] = useState('')
+const [number, setNumber] = useState(displayArray.length)
 useEffect(() =>{
  displayArray
   = filterTVShowsBySearchInput(input, displayArray
   );
- setCurrent(createComponent(displayArray))
+ setCurrent(createComponent(displayArray));
+ setNumber(displayArray.length)
 }
   ,
 [input]
@@ -37,6 +39,7 @@ useEffect(() =>{
           onChange={(event) => {
           setInput(event.target.value);  
         }} />
+        <div className="numberOfEpisodes">Displaying:{number} episodes</div>
         </div>
       <div className="main">
         {current}
