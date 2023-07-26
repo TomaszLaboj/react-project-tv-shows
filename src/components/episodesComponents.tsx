@@ -32,8 +32,9 @@ export default function DisplayEpisodes(props: EpisodeViewProp) {
 
       <img src={props.episode.image.medium} alt="props.episode.name" />
       <p>
-        {props.episode.summary.substring(3, props.episode.summary.length - 4)}
+        {props.episode.summary.replaceAll(/<\/?[^>]+(>|$)/gi, "")}
       </p>
     </div>
   );
 }
+
