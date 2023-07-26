@@ -4,25 +4,26 @@ import "./App.css"
 import {useState, useEffect} from "react";
 import filterTVShowsBySearchInput from "./components/filterTVShowsBySearchInput";
 import {IEpisode} from "./components/episodesComponents"
+import createComponent from "./components/createComponent"
 
 console.log(`Imported ${episodes.length} episode(s)`);
 console.log(`First episode's name is ${episodes[0].name}`);
 
 function App(): JSX.Element {
 
-  let episodesArrayForFiltering:IEpisode[]= episodes
+  let displayArray
+  :IEpisode[]= episodes
 
-  const episodesArray: JSX.Element[] = [];
-
-  for (const oneEpisode of episodesArrayForFiltering) {
-    episodesArray.push(<DisplayEpisodes episode={oneEpisode} />);
-  }
-  console.log(episodesArray)
-const [current, setCurrent] = useState(episodesArray);
+  
+  
+const [current, setCurrent] = useState(createComponent(displayArray
+  ));
 const [input, setInput] = useState('')
 useEffect(() =>{
- episodesArrayForFiltering = filterTVShowsBySearchInput(input, episodesArrayForFiltering);
- setCurrent([...episodesArray])
+ displayArray
+  = filterTVShowsBySearchInput(input, displayArray
+  );
+ setCurrent(createComponent(displayArray))
 }
   ,
 [input]
@@ -58,3 +59,4 @@ useEffect(() =>{
 }
 
 export default App;
+
