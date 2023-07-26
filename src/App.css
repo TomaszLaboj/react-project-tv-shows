@@ -1,20 +1,20 @@
 @import url("https://fonts.googleapis.com/css2?family=Pangolin&family=Victor+Mono:wght@100&display=swap");
 
 body {
-    background-color: #015249;
-    font-family: "Victor Mono", monospace;
-    color: #015249;
-    font-size: 24px;
+  background-color: #015249;
+  font-family: "Victor Mono", monospace;
+  color: #015249;
+  font-size: 24px;
 }
 
 .header {
-    color: #f9f9f9;
-    text-align: center;
+  color: #f9f9f9;
+  text-align: center;
 }
 
 .search {
-    color: #f9f9f9;
-    text-align: center;
+  color: #f9f9f9;
+  text-align: center;
 }
 
 .main {
