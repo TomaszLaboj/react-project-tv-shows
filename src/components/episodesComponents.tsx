@@ -1,6 +1,6 @@
 import formatEpisodeCode from "./formatEpisodeCode";
 
-interface IEpisode {
+export interface IEpisode {
   id: number;
   url: string;
   name: string;
@@ -24,7 +24,7 @@ interface EpisodeViewProp {
   episode: IEpisode;
 }
 
-export default function DisplayEpisodes(props: EpisodeViewProp) {
+export default function DisplayEpisodes(props: EpisodeViewProp){
   return (
     <div className="episode">
       <p className="episodeName">{props.episode.name}</p>
