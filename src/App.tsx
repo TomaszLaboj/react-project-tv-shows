@@ -19,7 +19,7 @@ function App(): JSX.Element {
     const displayArray_2 = filterTVShowsBySearchInput(input, displayArray);
     setCurrent(createComponent(displayArray_2));
     setNumber(displayArray_2.length);
-  }, [input,displayArray]);
+  }, [input, displayArray]);
 
   return (
     <>
