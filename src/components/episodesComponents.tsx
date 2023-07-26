@@ -1,6 +1,6 @@
 import formatEpisodeCode from "./formatEpisodeCode";
 
-interface IEpisode {
+export interface IEpisode {
   id: number;
   url: string;
   name: string;

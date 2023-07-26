@@ -1,20 +1,42 @@
 import episodes from "./episodes.json";
-import DisplayEpisodes from "./components/episodesComponents";
+
 import "./App.css";
+import { useState, useEffect } from "react";
+import filterTVShowsBySearchInput from "./components/filterTVShowsBySearchInput";
+import { IEpisode } from "./components/episodesComponents";
+import createComponent from "./components/createComponent";
 
 console.log(`Imported ${episodes.length} episode(s)`);
 console.log(`First episode's name is ${episodes[0].name}`);
 
 function App(): JSX.Element {
-  const episodesArray: JSX.Element[] = [];
+  const displayArray: IEpisode[] = episodes;
 
-  for (const oneEpisode of episodes) {
-    episodesArray.push(<DisplayEpisodes episode={oneEpisode} />);
-  }
+  const [current, setCurrent] = useState(createComponent(displayArray));
+  const [input, setInput] = useState("");
+  const [number, setNumber] = useState(displayArray.length);
+  useEffect(() => {
+    const displayArray_2 = filterTVShowsBySearchInput(input, displayArray);
+    setCurrent(createComponent(displayArray_2));
+    setNumber(displayArray_2.length);
+  }, [input, displayArray]);
 
   return (
     <>
-      <div className="main">{episodesArray}</div>
+      <div className="header">TV Shows</div>
+      <div className="search">
+        Search bar:
+        <input
+          className="searchBar"
+          value={input}
+          onChange={(event) => {
+            setInput(event.target.value);
+          }}
+        />
+        <div className="numberOfEpisodes">Displaying:{number} episodes</div>
+      </div>
+      <div className="main">{current}</div>
+
       <footer className="footer">
         <p>
           Data has been obtained from{" "}
