@@ -24,7 +24,7 @@ function App(): JSX.Element {
         <h1>TV Shows</h1>
       </div>
       <div className="search">
-        <p>Search:</p>
+        <p className="searchText">Search:</p>
         <input
           className="searchBar"
           value={input}

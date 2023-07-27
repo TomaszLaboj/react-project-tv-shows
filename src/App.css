@@ -12,6 +12,9 @@ body {
   text-align: center;
 }
 
+.searchText {
+  display: inline-block;
+}
 .search {
   color: #f9f9f9;
   text-align: center;
@@ -52,5 +55,6 @@ body {
 }
 
 .footer {
-  color: white;
+  color: #f9f9f9;
+  text-align: center;
 }
