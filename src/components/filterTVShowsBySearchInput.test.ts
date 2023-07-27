@@ -1,4 +1,4 @@
-import filterTVShowsBySearchInput from "./filterTVShowsBySearchInput";
+import { filterTVShowsBySearchInput } from "./filterTVShowsBySearchInput";
 import episodes from "../episodes.json";
 
 test("should return filtered array length", () => {

@@ -1,13 +1,9 @@
-import episodes from "./episodes.json";
-
 import "./App.css";
 import { useState, useEffect } from "react";
-import filterTVShowsBySearchInput from "./components/filterTVShowsBySearchInput";
+import episodes from "./episodes.json";
+import { filterTVShowsBySearchInput } from "./components/filterTVShowsBySearchInput";
 import { IEpisode } from "./components/episodesComponents";
-import createComponent from "./components/createComponent";
-
-console.log(`Imported ${episodes.length} episode(s)`);
-console.log(`First episode's name is ${episodes[0].name}`);
+import { createComponent } from "./components/createComponent";
 
 function App(): JSX.Element {
   const displayArray: IEpisode[] = episodes;
@@ -16,24 +12,29 @@ function App(): JSX.Element {
   const [input, setInput] = useState("");
   const [number, setNumber] = useState(displayArray.length);
   useEffect(() => {
-    const displayArray_2 = filterTVShowsBySearchInput(input, displayArray);
-    setCurrent(createComponent(displayArray_2));
-    setNumber(displayArray_2.length);
+    const UpdatedDisplayArray = filterTVShowsBySearchInput(input, displayArray);
+    setCurrent(createComponent(UpdatedDisplayArray));
+    setNumber(UpdatedDisplayArray.length);
   }, [input, displayArray]);
 
   return (
     <>
-      <div className="header">TV Shows</div>
+      <div className="header">
+        <h1>TV Shows</h1>
+      </div>
       <div className="search">
-        Search bar:
+        <p>Search:</p>
         <input
           className="searchBar"
           value={input}
+          placeholder="your search term..."
           onChange={(event) => {
             setInput(event.target.value);
           }}
         />
-        <div className="numberOfEpisodes">Displaying:{number} episodes</div>
+        <div className="numberOfEpisodes">
+          <p>Displaying:{number} episodes</p>
+        </div>
       </div>
       <div className="main">{current}</div>
 

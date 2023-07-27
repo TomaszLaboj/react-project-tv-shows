@@ -1,4 +1,4 @@
-import formatEpisodeCode from "./formatEpisodeCode";
+import { formatEpisodeCode } from "./formatEpisodeCode";
 
 test("episode and season numbers are displayed as 2 digits", () => {
   expect(formatEpisodeCode(10, 15)).toBe("S10E15");

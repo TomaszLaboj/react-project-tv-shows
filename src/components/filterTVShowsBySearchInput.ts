@@ -1,6 +1,6 @@
 import { IEpisode } from "./episodesComponents";
 
-export default function filterTVShowsBySearchInput(
+export function filterTVShowsBySearchInput(
   inputText: string,
   inputArray: IEpisode[]
 ): IEpisode[] {

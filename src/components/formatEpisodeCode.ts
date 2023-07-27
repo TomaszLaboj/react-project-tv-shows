@@ -1,7 +1,4 @@
-export default function formatEpisodeCode(
-  season: number,
-  episode: number
-): string {
+export function formatEpisodeCode(season: number, episode: number): string {
   let seasonCode: string;
   let episodeCode: string;
 
