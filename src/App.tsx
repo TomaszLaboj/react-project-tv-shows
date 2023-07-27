@@ -1,23 +1,32 @@
 import "./App.css";
+
 import { useState, useEffect } from "react";
 // import episodes from "./episodes.json";
 import episodesSimpsons from "./episodesSimpsons.json";
 import { filterTVShowsBySearchInput } from "./components/filterTVShowsBySearchInput";
-import { IEpisode } from "./components/episodesComponents";
+import { DisplayEpisode, IEpisode } from "./components/episodesComponents";
 import { createComponent } from "./components/createComponent";
 
+// async function fetchTVEpisodes() {
+//   const response = await fetch (
+//     "https://api.tvmaze.com/shows/82/episodes"
+//   );
+//   const jsonBody = await response.json();
+//   console.log(jsonBody);
+
+// }
+
 function App(): JSX.Element {
-  const displayArray: IEpisode[] = episodesSimpsons;
-
-  const [current, setCurrent] = useState(createComponent(displayArray));
+  const [episodesArray, setEpisodesArray] = useState<IEpisode[]>([]);
   const [input, setInput] = useState("");
-  const [number, setNumber] = useState(displayArray.length);
   useEffect(() => {
-    const UpdatedDisplayArray = filterTVShowsBySearchInput(input, displayArray);
-    setCurrent(createComponent(UpdatedDisplayArray));
-    setNumber(UpdatedDisplayArray.length);
-  }, [input, displayArray]);
-
+    function fetchTVEpisodes() {
+      fetch("https://api.tvmaze.com/shows/83/episodes")
+        .then((res) => res.json())
+        .then((res) => setEpisodesArray(res));
+    }
+    fetchTVEpisodes();
+  }, []);
   return (
     <>
       <div className="header">
@@ -34,10 +43,14 @@ function App(): JSX.Element {
           }}
         />
         <div className="numberOfEpisodes">
-          <p>Displaying:{number} episodes</p>
+          <p>Displaying:{episodesArray.length} episodes</p>
         </div>
       </div>
-      <div className="main">{current}</div>
+      <div className="main">
+        {episodesArray.map((e) => (
+          <DisplayEpisode episode={e} key={e.id} />
+        ))}
+      </div>
 
       <footer className="footer">
         <p>
