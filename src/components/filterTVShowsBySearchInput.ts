@@ -7,7 +7,9 @@ export function filterTVShowsBySearchInput(
   const filteredArrayByName: IEpisode[] = inputArray.filter(
     (episodeName) =>
       episodeName.name.toLowerCase().includes(inputText.toLowerCase()) ||
-      episodeName.summary.toLowerCase().includes(inputText.toLowerCase())
+      (episodeName.summary
+        ? episodeName.summary.toLowerCase().includes(inputText.toLowerCase())
+        : "")
   );
   return filteredArrayByName;
 }

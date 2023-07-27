@@ -1,12 +1,13 @@
 import "./App.css";
 import { useState, useEffect } from "react";
 import episodes from "./episodes.json";
+import episodesSimpsons from "./episodesSimpsons.json";
 import { filterTVShowsBySearchInput } from "./components/filterTVShowsBySearchInput";
 import { IEpisode } from "./components/episodesComponents";
 import { createComponent } from "./components/createComponent";
 
 function App(): JSX.Element {
-  const displayArray: IEpisode[] = episodes;
+  const displayArray: IEpisode[] = episodesSimpsons;
 
   const [current, setCurrent] = useState(createComponent(displayArray));
   const [input, setInput] = useState("");

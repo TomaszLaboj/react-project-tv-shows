@@ -11,13 +11,13 @@ export interface IEpisode {
   airdate: string;
   airtime: string;
   airstamp: string;
-  rating: { average: number };
+  rating?: { average?: number | null };
   runtime: number;
-  image: {
-    medium: string;
-    original: string;
+  image?: null | {
+    medium?: string;
+    original?: string;
   };
-  summary: string;
+  summary?: string | null;
   _links: { self: { href: string } };
 }
 
@@ -33,12 +33,20 @@ export function DisplayEpisodes(props: EpisodeViewProp) {
         {formatEpisodeCode(props.episode.season, props.episode.number)}
       </p>
       <hr className="dividerLine"></hr>
-      <img
-        className="episodeImg"
-        src={props.episode.image.medium}
-        alt="props.episode.name"
-      />
-      <p className="episodeSummary">{cleanUpSummary(props.episode.summary)}</p>
+      <div>
+        {props.episode.image && (
+          <img
+            className="episodeImg"
+            src={props.episode.image.medium}
+            alt="props.episode.name"
+          />
+        )}
+      </div>
+      {props.episode.summary && (
+        <p className="episodeSummary">
+          {cleanUpSummary(props.episode.summary)}
+        </p>
+      )}
     </div>
   );
 }
