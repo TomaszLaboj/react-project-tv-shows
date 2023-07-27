@@ -9,6 +9,5 @@ export default function filterTVShowsBySearchInput(
       episodeName.name.toLowerCase().includes(inputText.toLowerCase()) ||
       episodeName.summary.toLowerCase().includes(inputText.toLowerCase())
   );
-  //   const filteredArrayBySummary:IEpisode[] = inputArray.filter((episodeName)=>episodeName.summary.toLowerCase().includes(inputText.toLowerCase()));
   return filteredArrayByName;
 }
