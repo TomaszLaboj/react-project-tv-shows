@@ -1,4 +1,5 @@
 import { formatEpisodeCode } from "./formatEpisodeCode";
+import { cleanUpSummary } from "./cleanUpSummary";
 
 export interface IEpisode {
   id: number;
@@ -37,9 +38,7 @@ export function DisplayEpisodes(props: EpisodeViewProp) {
         src={props.episode.image.medium}
         alt="props.episode.name"
       />
-      <p className="episodeSummary">
-        {props.episode.summary.replaceAll(/<\/?[^>]+(>|$)/gi, "")}
-      </p>
+      <p className="episodeSummary">{cleanUpSummary(props.episode.summary)}</p>
     </div>
   );
 }
