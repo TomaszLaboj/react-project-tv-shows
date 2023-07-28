@@ -1,11 +1,12 @@
 import "./App.css";
-
 import { useState, useEffect } from "react";
 import { filterTVShowsBySearchInput } from "./components/filterTVShowsBySearchInput";
 import { DisplayEpisode, IEpisode } from "./components/episodesComponents";
 
 function App(): JSX.Element {
-  const [episodesArray, setEpisodesArray] = useState<IEpisode[]>([]);
+  const [FilteredEpisodesArray, setFilteredEpisodesArray] = useState<
+    IEpisode[]
+  >([]);
   const [input, setInput] = useState<string>("");
   const [fullEpisodesArray, setFullEpisodesArray] = useState<IEpisode[]>([]);
 
@@ -23,7 +24,7 @@ function App(): JSX.Element {
       input,
       fullEpisodesArray
     );
-    setEpisodesArray(filteredArray);
+    setFilteredEpisodesArray(filteredArray);
   }, [input, fullEpisodesArray]);
   return (
     <>
@@ -41,7 +42,7 @@ function App(): JSX.Element {
           }}
         />
         <div className="numberOfEpisodes">
-          <p>Displaying {episodesArray.length} episodes</p>
+          <p>Displaying {FilteredEpisodesArray.length} episodes</p>
         </div>
       </div>
       <div className="main">
@@ -49,7 +50,9 @@ function App(): JSX.Element {
           ? fullEpisodesArray.map((e) => (
               <DisplayEpisode episode={e} key={e.id} />
             ))
-          : episodesArray.map((e) => <DisplayEpisode episode={e} key={e.id} />)}
+          : FilteredEpisodesArray.map((e) => (
+              <DisplayEpisode episode={e} key={e.id} />
+            ))}
       </div>
 
       <footer className="footer">
