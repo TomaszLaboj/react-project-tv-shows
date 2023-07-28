@@ -25,7 +25,7 @@ interface EpisodeViewProp {
   episode: IEpisode;
 }
 
-export function DisplayEpisodes(props: EpisodeViewProp) {
+export function DisplayEpisode(props: EpisodeViewProp): JSX.Element {
   return (
     <div className="episode">
       <p className="episodeName">{props.episode.name}</p>

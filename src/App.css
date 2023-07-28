@@ -58,3 +58,13 @@ body {
   color: #f9f9f9;
   text-align: center;
 }
+
+a:link {
+  color: #f9f9f9;
+  background-color: transparent;
+}
+
+a:visited {
+  color: #57bc90;
+  background-color: transparent;
+}

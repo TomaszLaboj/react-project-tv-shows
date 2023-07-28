@@ -1,23 +1,31 @@
 import "./App.css";
 import { useState, useEffect } from "react";
-// import episodes from "./episodes.json";
-import episodesSimpsons from "./episodesSimpsons.json";
 import { filterTVShowsBySearchInput } from "./components/filterTVShowsBySearchInput";
-import { IEpisode } from "./components/episodesComponents";
-import { createComponent } from "./components/createComponent";
+import { DisplayEpisode, IEpisode } from "./components/episodesComponents";
 
 function App(): JSX.Element {
-  const displayArray: IEpisode[] = episodesSimpsons;
+  const [FilteredEpisodesArray, setFilteredEpisodesArray] = useState<
+    IEpisode[]
+  >([]);
+  const [input, setInput] = useState<string>("");
+  const [fullEpisodesArray, setFullEpisodesArray] = useState<IEpisode[]>([]);
 
-  const [current, setCurrent] = useState(createComponent(displayArray));
-  const [input, setInput] = useState("");
-  const [number, setNumber] = useState(displayArray.length);
   useEffect(() => {
-    const UpdatedDisplayArray = filterTVShowsBySearchInput(input, displayArray);
-    setCurrent(createComponent(UpdatedDisplayArray));
-    setNumber(UpdatedDisplayArray.length);
-  }, [input, displayArray]);
+    function fetchTVEpisodes() {
+      fetch("https://api.tvmaze.com/shows/83/episodes")
+        .then((res) => res.json())
+        .then((res) => setFullEpisodesArray(res));
+    }
+    fetchTVEpisodes();
+  }, []);
 
+  useEffect(() => {
+    const filteredArray: IEpisode[] = filterTVShowsBySearchInput(
+      input,
+      fullEpisodesArray
+    );
+    setFilteredEpisodesArray(filteredArray);
+  }, [input, fullEpisodesArray]);
   return (
     <>
       <div className="header">
@@ -34,10 +42,18 @@ function App(): JSX.Element {
           }}
         />
         <div className="numberOfEpisodes">
-          <p>Displaying:{number} episodes</p>
+          <p>Displaying {FilteredEpisodesArray.length} episodes</p>
         </div>
       </div>
-      <div className="main">{current}</div>
+      <div className="main">
+        {input.length === 0
+          ? fullEpisodesArray.map((e) => (
+              <DisplayEpisode episode={e} key={e.id} />
+            ))
+          : FilteredEpisodesArray.map((e) => (
+              <DisplayEpisode episode={e} key={e.id} />
+            ))}
+      </div>
 
       <footer className="footer">
         <p>
