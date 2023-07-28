@@ -14,13 +14,11 @@ body {
 
 .searchText {
   display: inline-block;
-
 }
 .search {
   display: inline-block;
   color: #f9f9f9;
   text-align: center;
-
 }
 
 .main {
@@ -62,7 +60,7 @@ body {
   text-align: center;
 }
 
-a:link{
+a:link {
   color: #f9f9f9;
   background-color: transparent;
 }
@@ -70,5 +68,4 @@ a:link{
 a:visited {
   color: #57bc90;
   background-color: transparent;
-
 }

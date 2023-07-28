@@ -19,23 +19,25 @@ import { DisplayEpisode, IEpisode } from "./components/episodesComponents";
 function App(): JSX.Element {
   const [episodesArray, setEpisodesArray] = useState<IEpisode[]>([]);
   const [input, setInput] = useState<string>("");
-
-  let fullEpisodesArray:IEpisode[] = [];
+  const [fullEpisodesArray, setFullEpisodesArray] = useState<IEpisode[]>([]);
 
   useEffect(() => {
     function fetchTVEpisodes() {
       fetch("https://api.tvmaze.com/shows/22036/episodes")
         .then((res) => res.json())
-        .then((res) => fullEpisodesArray = res)
-        .then(() => setEpisodesArray(fullEpisodesArray));
+        // .then((res) => setEpisodesArray(res))
+        .then((res) => setFullEpisodesArray(res));
     }
     fetchTVEpisodes();
   }, []);
 
-  useEffect(()=>{
-    const filteredArray:IEpisode[] = filterTVShowsBySearchInput(input,fullEpisodesArray);
+  useEffect(() => {
+    const filteredArray: IEpisode[] = filterTVShowsBySearchInput(
+      input,
+      fullEpisodesArray
+    );
     setEpisodesArray(filteredArray);
-  },[input, fullEpisodesArray]);
+  }, [input, fullEpisodesArray]);
   return (
     <>
       <div className="header">
@@ -56,9 +58,11 @@ function App(): JSX.Element {
         </div>
       </div>
       <div className="main">
-        {episodesArray.map((e) => (
-          <DisplayEpisode episode={e} key={e.id} />
-        ))}
+        {input.length === 0
+          ? fullEpisodesArray.map((e) => (
+              <DisplayEpisode episode={e} key={e.id} />
+            ))
+          : episodesArray.map((e) => <DisplayEpisode episode={e} key={e.id} />)}
       </div>
 
       <footer className="footer">
