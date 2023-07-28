@@ -1,20 +1,8 @@
 import "./App.css";
 
 import { useState, useEffect } from "react";
-// import episodes from "./episodes.json";
-// import episodesSimpsons from "./episodesSimpsons.json";
 import { filterTVShowsBySearchInput } from "./components/filterTVShowsBySearchInput";
 import { DisplayEpisode, IEpisode } from "./components/episodesComponents";
-//import { createComponent } from "./components/createComponent";
-
-// async function fetchTVEpisodes() {
-//   const response = await fetch (
-//     "https://api.tvmaze.com/shows/82/episodes"
-//   );
-//   const jsonBody = await response.json();
-//   console.log(jsonBody);
-
-// }
 
 function App(): JSX.Element {
   const [episodesArray, setEpisodesArray] = useState<IEpisode[]>([]);
@@ -23,9 +11,8 @@ function App(): JSX.Element {
 
   useEffect(() => {
     function fetchTVEpisodes() {
-      fetch("https://api.tvmaze.com/shows/22036/episodes")
+      fetch("https://api.tvmaze.com/shows/83/episodes")
         .then((res) => res.json())
-        // .then((res) => setEpisodesArray(res))
         .then((res) => setFullEpisodesArray(res));
     }
     fetchTVEpisodes();
@@ -54,7 +41,7 @@ function App(): JSX.Element {
           }}
         />
         <div className="numberOfEpisodes">
-          <p>Displaying:{episodesArray.length} episodes</p>
+          <p>Displaying {episodesArray.length} episodes</p>
         </div>
       </div>
       <div className="main">
