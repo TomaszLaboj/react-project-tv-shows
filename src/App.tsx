@@ -2,10 +2,10 @@ import "./App.css";
 
 import { useState, useEffect } from "react";
 // import episodes from "./episodes.json";
-import episodesSimpsons from "./episodesSimpsons.json";
+// import episodesSimpsons from "./episodesSimpsons.json";
 import { filterTVShowsBySearchInput } from "./components/filterTVShowsBySearchInput";
 import { DisplayEpisode, IEpisode } from "./components/episodesComponents";
-import { createComponent } from "./components/createComponent";
+//import { createComponent } from "./components/createComponent";
 
 // async function fetchTVEpisodes() {
 //   const response = await fetch (
@@ -18,15 +18,24 @@ import { createComponent } from "./components/createComponent";
 
 function App(): JSX.Element {
   const [episodesArray, setEpisodesArray] = useState<IEpisode[]>([]);
-  const [input, setInput] = useState("");
+  const [input, setInput] = useState<string>("");
+
+  let fullEpisodesArray:IEpisode[] = [];
+
   useEffect(() => {
     function fetchTVEpisodes() {
-      fetch("https://api.tvmaze.com/shows/83/episodes")
+      fetch("https://api.tvmaze.com/shows/22036/episodes")
         .then((res) => res.json())
-        .then((res) => setEpisodesArray(res));
+        .then((res) => fullEpisodesArray = res)
+        .then(() => setEpisodesArray(fullEpisodesArray));
     }
     fetchTVEpisodes();
   }, []);
+
+  useEffect(()=>{
+    const filteredArray:IEpisode[] = filterTVShowsBySearchInput(input,fullEpisodesArray);
+    setEpisodesArray(filteredArray);
+  },[input, fullEpisodesArray]);
   return (
     <>
       <div className="header">
