@@ -1,0 +1,70 @@
+@import url("https://fonts.googleapis.com/css2?family=Pangolin&family=Victor+Mono:wght@100&display=swap");
+
+body {
+  background-color: #015249;
+  font-family: "Victor Mono", monospace;
+  color: #015249;
+  font-size: 24px;
+}
+
+.header {
+  color: #f9f9f9;
+  text-align: center;
+}
+
+.searchText {
+  display: inline-block;
+}
+.search {
+  color: #f9f9f9;
+  text-align: center;
+}
+
+.main {
+  margin-top: 16px;
+  display: grid;
+  grid-template-columns: 300px 300px 300px 300px;
+  justify-content: center;
+  gap: 50px;
+  padding: 10px;
+}
+.episode {
+  height: 500px;
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 10px;
+  text-align: center;
+}
+
+.episodeName {
+  font-weight: bold;
+  font-size: 1rem;
+}
+
+.episodeCode {
+  font-size: 0.8rem;
+}
+.dividerLine {
+  border-color: #57bc90;
+}
+
+.episodeSummary {
+  font-size: 0.8rem;
+}
+
+.footer {
+  color: #f9f9f9;
+  text-align: center;
+}
+
+a:link {
+  color: #f9f9f9;
+  background-color: transparent;
+}
+
+a:visited {
+  color: #57bc90;
+  background-color: transparent;
+}
